@@ -15,7 +15,7 @@ function configureApp(){
     });
 
     app.get('/webhookMsn', (req,res) => {
-        if(req.query['hub.verify_token'] == configuration.tokenMsn){
+        if(req.query['hub.verify_token'] == configuration.TOKENMSN){
             res.send(req.query['hub.challenge']);
         }
         else{
@@ -49,8 +49,8 @@ function processMsg(message){
 };
 
 function runApp(){
-    app.listen(configuration.port,() =>{
-        console.log('Server running on port '+configuration.port);
+    app.listen(configuration.PORT,() =>{
+        console.log('Server running on port '+configuration.PORT);
     });
 };
 

@@ -62,7 +62,7 @@ function sendMsgImg(senderId){
 
 function callWeatherAPI(senderId){
     var temp = null;
-    var url = 'http://api.openweathermap.org/data/2.5/weather?zip=45140,mx&appid='+configuration.weatherKey;
+    var url = 'http://api.openweathermap.org/data/2.5/weather?zip=45140,mx&appid='+configuration.WEATHERKEY;
     request(url, (err,res,body)=>{
         if(err) console.log(err);
         let jsonObj = JSON.parse(body);
@@ -76,7 +76,7 @@ function callWeatherAPI(senderId){
 function callFBAPI(msgData){
     var payload = {
         url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: { access_token: configuration.pageKey },
+        qs: { access_token: configuration.PAGEKEY },
         method: 'POST',
         json: msgData
     };
