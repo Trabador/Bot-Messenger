@@ -79,14 +79,14 @@ function sendTemplateInfo(senderId){
                         image_url: 'http://www.saludypsicologia.com/img/thumbs/19625597d706ccaa9c8f6f0f859ee199.jpg',
                         subtitle:  'El cosmos es un lugar impresionante',
                         default_action: {
-                            type: web_url,
+                            type: 'web_url',
                             url: 'https://apod.nasa.gov/apod/astropix.html',
                             messenger_extensions: true,
-                            webview_height_ratio: tall
+                            webview_height_ratio: 'tall'
                         },
                         buttons:[
                             {
-                            type: web_url,
+                            type: 'web_url',
                             url: 'https://apod.nasa.gov/apod/astropix.html',
                             title: 'Nasa APOD'
                             }              
