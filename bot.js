@@ -76,7 +76,7 @@ function sendTemplateInfo(senderId){
                     elements:[
                     {
                         title: 'Bienvenido a el Cosmos',
-                        image_url: 'http://www.saludypsicologia.com/img/thumbs/19625597d706ccaa9c8f6f0f859ee199.jpg',
+                        image_url: 'https://apod.nasa.gov/apod/image/1711/OrionDust_Battistella_1824.jpg',
                         subtitle:  'El cosmos es un lugar impresionante',
                         default_action: {
                             type: 'web_url',
