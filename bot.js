@@ -25,6 +25,9 @@ function bot(text,senderId){
         let msg = 'Aqui esta un gato'
         sendMsgText(senderId,msg);
     }
+    else if(text.indexOf('informacion')>-1 || text.indexOf('info')>-1){
+        sendTemplateInfo(senderId);
+    }
     else{
         let msg = 'Aun sigo aprendiendo';
         sendMsgText(senderId,msg);
@@ -59,6 +62,43 @@ function sendMsgImg(senderId){
     };
     callFBAPI(msgData);
 }
+
+function sendTemplateInfo(senderId){
+    var msgData = {
+        recipient:{
+            id: senderId
+        },
+        message:{
+            attachment:{
+                type: template,
+                payload:{
+                    template_type: generic,
+                    elements:[
+                    {
+                        title: 'Bienvenido a el Cosmos',
+                        image_url: 'http://www.saludypsicologia.com/img/thumbs/19625597d706ccaa9c8f6f0f859ee199.jpg',
+                        subtitle:  'El cosmos es un lugar impresionante',
+                        default_action: {
+                            type: web_url,
+                            url: 'https://apod.nasa.gov/apod/astropix.html',
+                            messenger_extensions: true,
+                            webview_height_ratio: tall
+                        },
+                        buttons:[
+                            {
+                            type: web_url,
+                            url: 'https://apod.nasa.gov/apod/astropix.html',
+                            title: 'Nasa APOD'
+                            }              
+                        ]      
+                    }
+                    ]
+                }
+            }
+        }
+    }
+    callFBAPI(msgData);
+}; 
 
 function callWeatherAPI(senderId){
     var temp = null;
