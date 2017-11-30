@@ -70,9 +70,9 @@ function sendTemplateInfo(senderId){
         },
         message:{
             attachment:{
-                type: template,
+                type: 'template',
                 payload:{
-                    template_type: generic,
+                    template_type: 'generic',
                     elements:[
                     {
                         title: 'Bienvenido a el Cosmos',
