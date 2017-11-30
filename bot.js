@@ -80,9 +80,7 @@ function sendTemplateInfo(senderId){
                         subtitle:  'El cosmos es un lugar impresionante',
                         default_action: {
                             type: 'web_url',
-                            url: 'https://apod.nasa.gov/apod/astropix.html',
-                            messenger_extensions: true,
-                            webview_height_ratio: 'tall'
+                            url: 'https://apod.nasa.gov/apod/astropix.html'
                         },
                         buttons:[
                             {
