@@ -11,7 +11,7 @@ function configureApp(){
     app.use(bodyParser.urlencoded({ extended: false}));
 
     app.get('/', (req,res)=>{
-        res.send('Esta funcionando!');
+        res.send('Bot en linea');
     });
 
     app.get('/webhookMsn', (req,res) => {
@@ -19,7 +19,7 @@ function configureApp(){
             res.send(req.query['hub.challenge']);
         }
         else{
-            res.status(500).send('Acceso prohibido');
+            res.status(500).send('Acceso prohibido, no tienes permiso de acceder aqui');
         }
     });
 
