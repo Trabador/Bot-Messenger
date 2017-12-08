@@ -7,32 +7,41 @@ function bot(text,senderId){
 
     var salute = ['Hola, buen dia', 'Saludos, como estas', 'Hola , en que te puedo servir?'];
 
-    if(text.indexOf('hola')>-1 || text.indexOf('saludos')>-1){
+    if(containsKeyword(text,'hola') || containsKeyword(text,'saludos')){
         let x = Math.floor((Math.random() * 3)+1)-1;
         let msg = salute[x];
         console.log(msg);
         sendMsgText(senderId,msg);
     }
-    else if(text.indexOf('ayuda') > -1){
+    else if(containsKeyword(text,'ayuda')){
         msg = 'En que te puedo ayudar?';
         sendMsgText(senderId,msg);
     }
-    else if(text.indexOf('clima')>-1){
+    else if(containsKeyword(text,'clima')){
          callWeatherAPI(senderId);
     }
-    else if(text.indexOf('imagen del dia')>-1){
+    else if(containsKeyword(text,'imagen del dia')){
         callAPODAPI(senderId);
         let msg = 'Aqui esta la imagen del dia, cortesia de APOD, https://apod.nasa.gov/apod/'
         sendMsgText(senderId,msg);
     }
-    else if(text.indexOf('informacion')>-1 || text.indexOf('info')>-1){
+    else if(containsKeyword(text,'informacion')){
         sendTemplateInfo(senderId);
+    }
+    else if(containsKeyword(text,'fecha') || containsKeyword(text,'hora')){
+        callTIMEAPI(senderId);
     }
     else{
         let msg = 'Aun sigo aprendiendo';
         sendMsgText(senderId,msg);
     }
 };
+
+function containsKeyword(string,keyword){
+    var isContain = false;
+    isContain = string.indexOf(keyword) > -1
+    return isContain;
+}
 
 function sendMsgText(senderId,msg){
     var msgData = {
@@ -45,6 +54,19 @@ function sendMsgText(senderId,msg){
     };
     callFBAPI(msgData);
 };
+
+function callTIMEAPI(senderId){
+    var timeData = null;
+    var url = 'http://api.geonames.org/timezoneJSON?lat=20.67&lng=-103.344&username='+configuration.TIMEKEY;
+    request(url, (err,res,body)=>{
+        if(err) console.log(err);
+        let jsonObj = JSON.parse(body);
+        timeData = jsonObj.time;
+        let aux = timeData.split(" ");
+        let msg = 'Fecha Actual: '+aux[0]+ ' \nHora Actual: '+aux[1];
+        sendMsgText(senderId,msg);
+    });
+}
 
 function callAPODAPI(senderId){
     var imageUrl = null;

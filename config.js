@@ -5,7 +5,8 @@ var config = {
     TOKENMSN: process.env.TOKENMSN || 'my_token_test_bot',
     WEATHERKEY: process.env.WEATHERKEY || 'f7b011bd1f611507e8454fe16bb4f3ec',
     APODKEY: process.env.APODKEY || 'BPhurLQHcrwF0bjAbBG4hruHMtOMnOIzuCQnDQ4f', 
-    DEFAULT_IMAGE: 'http://d38zt8ehae1tnt.cloudfront.net/Cosmos_A_Spacetime_Odyssey__Episode_1_Standing_up_in_the_Milky_Way__168516.jpg?v=1468314436'
+    DEFAULT_IMAGE: 'http://d38zt8ehae1tnt.cloudfront.net/Cosmos_A_Spacetime_Odyssey__Episode_1_Standing_up_in_the_Milky_Way__168516.jpg?v=1468314436',
+    TIMEKEY: process.env.TIMEKEY || 'srtrabador'
 };
 
 module.exports = config;
