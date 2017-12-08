@@ -5,7 +5,7 @@ var config = {
     TOKENMSN: process.env.TOKENMSN || 'my_token_test_bot',
     WEATHERKEY: process.env.WEATHERKEY || 'f7b011bd1f611507e8454fe16bb4f3ec',
     APODKEY: process.env.APODKEY || 'BPhurLQHcrwF0bjAbBG4hruHMtOMnOIzuCQnDQ4f', 
-    DEFAULT_IMAGE: 'https://es.wikipedia.org/wiki/Cosmos:_A_Spacetime_Odyssey#/media/File:NGC7293_(2004).jpg',
+    DEFAULT_IMAGE: 'https://upload.wikimedia.org/wikipedia/en/8/8e/Cosmos_spacetime_odyssey_titlecard.jpg',
     TIMEKEY: process.env.TIMEKEY || 'srtrabador'
 };
 
