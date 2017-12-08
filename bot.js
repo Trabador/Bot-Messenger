@@ -20,9 +20,9 @@ function bot(text,senderId){
     else if(text.indexOf('clima')>-1){
          callWeatherAPI(senderId);
     }
-    else if(text.indexOf('imagen')>-1 && text.indexOf('gato')>-1){
-        sendMsgImg(senderId);
-        let msg = 'Aqui esta un gato'
+    else if(text.indexOf('imagen del dia')>-1){
+        callAPODAPI(senderId);
+        let msg = 'Aqui esta la imagen del dia, cortesia de APOD, https://apod.nasa.gov/apod/'
         sendMsgText(senderId,msg);
     }
     else if(text.indexOf('informacion')>-1 || text.indexOf('info')>-1){
@@ -46,7 +46,18 @@ function sendMsgText(senderId,msg){
     callFBAPI(msgData);
 };
 
-function sendMsgImg(senderId){
+function callAPODAPI(senderId){
+    var imageUrl = null;
+    var url = 'https://api.nasa.gov/planetary/apod?api_key='+configuration.APODKEY;
+    request(url, (err,res,body)=>{
+        if(err) console.log(err);
+        let jsonObj = JSON.parse(body);
+        imageUrl = jsonObj.url;
+        sendMsgImg(senderId,imageUrl);
+    });
+}
+
+function sendMsgImg(senderId, imageUrl){
     var msgData = {
         recipient: { 
             id: senderId
@@ -55,7 +66,7 @@ function sendMsgImg(senderId){
             attachment: {
                 type: 'image',
                 payload: {
-                    url: 'http://thecatapi.com/api/images/get?format=src'
+                    url: imageUrl || configuration.DEFAULT_IMAGE
                 }
             }
         }
