@@ -109,7 +109,7 @@ function sendTemplateInfo(senderId){
                     elements:[
                     {
                         title: 'Bienvenido a el Cosmos',
-                        image_url: 'https://apod.nasa.gov/apod/image/1711/OrionDust_Battistella_1824.jpg',
+                        image_url: configuration.DEFAULT_IMAGE,
                         subtitle:  'El cosmos es un lugar impresionante',
                         default_action: {
                             type: 'web_url',
